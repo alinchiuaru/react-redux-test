@@ -14,32 +14,29 @@ class Login extends Component {
         const { fields: { username, password }, handleSubmit } = this.props;
 
         return (
-            <div class="panel panel-primary">
-                <p>state: {this.props.auth.isFetching ? 'LOADING....' : ''}</p>
-                <div class="panel-heading">
-                    <h3 class="panel-title">Login</h3>
+            <div class="row login-form">
+                <div class="panel panel-default col-md-6 col-md-offset-3">
+                    <div class="panel-heading">Login</div>
+                    <div class="panel-body">
+                        <div class="col-md-8 col-md-offset-2">
+                            <form onSubmit={handleSubmit(this.onSubmit.bind(this))} class="form-horizontal">
+                                <div class="form-group label-floating">
+                                    <label for="inputEmail" class="control-label">Username</label>
+                                    <input type="text" class="form-control" id="inputEmail"{...username}/>
+                                </div>
+
+                                <div class="form-group label-floating">
+                                    <label for="inputPassword" class="control-label">Password</label>
+                                    <input type="text" class="form-control" id="inputPassword"{...password}/>
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-raised btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <form onSubmit={handleSubmit(this.onSubmit.bind(this))} class="form-horizontal">
-                  <fieldset>
-                    <div class="form-group">
-                      <label for="inputEmail" class="col-lg-2 control-label">Username</label>
-                      <div class="col-lg-10">
-                        <input type="text" class="form-control" id="inputEmail" placeholder="Username" {...username}/>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                      <div class="col-lg-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" {...password}/>
-                      </div>
-                    </div>
-                  </fieldset>
-                  <div class="form-group">
-                      <div class="col-lg-10 col-lg-offset-2">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </div>
-                    </div>
-                </form>
             </div>
         );
     }
