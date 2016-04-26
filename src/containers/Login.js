@@ -4,7 +4,10 @@ import { loginUser } from '../actions/login';
 
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
+import Paper from 'material-ui/lib/paper';
+import Colors from 'material-ui/lib/styles/colors';
 
+console.log(Colors);
 
 class Login extends Component {
     static contextTypes = {
@@ -25,11 +28,12 @@ class Login extends Component {
         const { fields: { username, password }, handleSubmit } = this.props;
 
         return (
-          <div style={ {marginTop: '30vh' } }>
-            <div class="row center-xs text-headline">
-              Welcome!
-            </div>
-            <div class="row center-xs">
+          <div class="row center-xs middle-xs col" style={{ 'minHeight': '550px' }}>
+              <Paper class="col-md-3" style={{ 'backgroundColor': Colors.cyan500, 'minHeight': '100px', 'width': '100%'}} zDepth={1}>
+                  <p class="text-headline" style={{ 'color': Colors.grey50 }}>Welcome!</p>
+              </Paper>
+
+              <Paper class="col-md-3" style={{ 'backgroundColor': Colors.grey50, 'width': '100%', 'padding': '50px'}} zDepth={1}>
                 <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                     <div>
                         <TextField
@@ -51,11 +55,11 @@ class Login extends Component {
                         />
                     </div>
 
-                    <div>
+                    <div style={{'margin-top': '50px'}}>
                         <RaisedButton type="submit" secondary={true} label="Submit"/>
                     </div>
                   </form>
-              </div>
+                </Paper>
             </div>
         );
     }

@@ -47,6 +47,11 @@
   flex-direction: column-reverse;
 }
 
+.col {
+  -webkit-flex-direction: column;
+  flex-direction:         column;
+}
+
 .col-xs,
 .col-xs-1,
 .col-xs-2,

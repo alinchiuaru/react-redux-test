@@ -18,4 +18,4 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(rootReducer)}>
     <Router history={browserHistory} routes={routes}/>
   </Provider>
-  , document.querySelector('.container'));
+  , document.querySelector('.root-element'));
