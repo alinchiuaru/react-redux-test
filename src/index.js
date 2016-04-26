@@ -9,12 +9,13 @@ import routes from './routes';
 import axios from 'axios';
 
 import App from './components/app';
-import reducers from './reducers';
+import rootReducer from './reducers/rootReducer';
+
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={createStoreWithMiddleware(rootReducer)}>
     <Router history={browserHistory} routes={routes}/>
   </Provider>
   , document.querySelector('.container'));
