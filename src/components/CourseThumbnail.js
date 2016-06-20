@@ -1,7 +1,8 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import ActionExplore from 'material-ui/svg-icons/action/explore';
+import { Link } from 'react-router';
 
 const logoStyle = {
     height          : 200,
@@ -31,9 +32,11 @@ const CourseThumbnail = (props) => (
     <div class="col-md-4 col-xs-6" style={{ 'padding': 10, 'position': 'relative' }}>
         <Paper style={computeLogoStyle(props)} zDepth={4}></Paper>
 
-        <FloatingActionButton secondary={true} style={{ position: 'absolute', 'top': '56%', 'right': '5%' }}>
-            <ContentAdd />
-        </FloatingActionButton>
+        <Link to={`courses/${props.id}`}>
+             <FloatingActionButton style={{ position: 'absolute', 'top': '56%', 'right': '5%' }}>
+                <ActionExplore />
+            </FloatingActionButton>
+        </Link>
 
         <Paper style={ descriptionStyle }>
             <h2 class="text-title">{ props.title }</h2>

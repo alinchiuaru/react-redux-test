@@ -18,5 +18,6 @@ export default (
     <Route path="/" component={App}>
         <Route path="/login" component={Login}/>
         <Route path="/courses" component={Courses} onEnter={requireAuth}/>
+        <Route path="/courses/:id" onEnter={requireAuth}/>
     </Route>
 );

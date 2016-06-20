@@ -18,7 +18,7 @@ class Courses extends Component {
 
        return this.props.courses.courses.map(function(course) {
             return (
-                <CourseThumbnail key={course.id} description={course.description} title={course.title} logo={course.logo} />
+                <CourseThumbnail key={course.id} id={course.id} description={course.description} title={course.title} logo={course.logo} />
             );
         });
     }
