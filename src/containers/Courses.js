@@ -24,7 +24,6 @@ class Courses extends Component {
     }
 
     render() {
-        console.log(this.props.courses);
         return (
             <div>
                 <HeaderBar/>

@@ -16,10 +16,8 @@ class Login extends Component {
 
     onSubmit(props) {
         this.props.loginUser(props).then(() => {
-            console.log('after submit:', this.props.auth);
-
             if ( this.props.auth.isAuthenticated ) {
-                this.context.router.push('/users');
+                this.context.router.push('/courses');
             }
         });
     }
@@ -28,18 +26,19 @@ class Login extends Component {
         const { fields: { username, password }, handleSubmit } = this.props;
 
         return (
-          <div class="row center-xs middle-xs col" style={{ 'minHeight': '550px' }}>
-              <Paper class="col-md-3" style={{ 'backgroundColor': Colors.cyan500, 'minHeight': '100px', 'width': '100%'}} zDepth={1}>
-                  <p class="text-headline" style={{ 'color': Colors.grey50 }}>Welcome!</p>
+          <div class="row center-xs middle-xs col" style={{ 'minHeight': '550px', 'flexDirection': 'column' }}>
+              <Paper class="col-md-3 col-xs-6" style={{ 'backgroundColor': Colors.cyan500, 'minHeight': '100px', 'width': '100%'}} zDepth={1}>
+                  <p class="text-headline" style={{ 'color': Colors.grey50, 'lineHeight': '100px' }}>Welcome!</p>
               </Paper>
 
-              <Paper class="col-md-3" style={{ 'backgroundColor': Colors.grey50, 'width': '100%', 'padding': '50px'}} zDepth={1}>
+              <Paper class="col-md-3 col-xs-6" style={{ 'backgroundColor': Colors.grey50, 'width': '100%', 'padding': '50px'}} zDepth={1}>
                 <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                     <div>
                         <TextField
                           hintText="Username"
                           floatingLabelText="Username"
                           type="text"
+                          fullWidth={true}
                           {...username}
                           required
                         />
@@ -50,6 +49,7 @@ class Login extends Component {
                           hintText="Password Field"
                           floatingLabelText="Password"
                           type="password"
+                          fullWidth={true}
                           {...password}
                           required
                         />
