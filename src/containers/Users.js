@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
-import Paper from 'material-ui/Paper';
+import HeaderBar from '../components/HeaderBar';
+import CourseThumbnail from '../components/CourseThumbnail';
 
 export default class Users extends Component {
+    renderCourseThumbnails() {
+        const coursesArray = [];
+        for ( let i = 1; i < 8; i++ ) {
+            coursesArray.push( <CourseThumbnail key={i} description={`This is a default description for the course ( ${i} )`} /> );
+        }
+
+        return coursesArray;
+    }
     render() {
         return (
-            <div class="row middle-xs">
-                <Paper class="col-md-2" style={{ 'backgroundColor': 'red', height: '200' }} zDepth={3}/>
-                <Paper class="col-md-2" style={{ 'backgroundColor': 'gray', height: '200'}} zDepth={2}/>
+            <div>
+                <HeaderBar/>
+                    <div class="container-fluid">
+                        <h2 class="text-display-2">My Courses</h2>
+                        <div class="row">
+                            {this.renderCourseThumbnails()}
+                        </div>
+                    </div>
             </div>
         );
     }

@@ -58,6 +58,8 @@ class Login extends Component {
                     <div style={{'marginTop': '50px'}}>
                         <RaisedButton type="submit" secondary={true} label="Submit"/>
                     </div>
+
+                    <p style={{ 'color': Colors.pinkA200 }}>{ this.props.auth.errorMessage }</p>
                   </form>
                 </Paper>
             </div>

@@ -11,6 +11,10 @@ import axios from 'axios';
 import App from './components/app';
 import rootReducer from './reducers/rootReducer';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
