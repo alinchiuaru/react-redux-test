@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { loginUser } from '../actions/login';
 
-import RaisedButton from 'material-ui/lib/raised-button';
-import TextField from 'material-ui/lib/text-field';
-import Paper from 'material-ui/lib/paper';
-import Colors from 'material-ui/lib/styles/colors';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import * as Colors from 'material-ui/styles/colors';
 
 console.log(Colors);
 
@@ -55,7 +55,7 @@ class Login extends Component {
                         />
                     </div>
 
-                    <div style={{'margin-top': '50px'}}>
+                    <div style={{'marginTop': '50px'}}>
                         <RaisedButton type="submit" secondary={true} label="Submit"/>
                     </div>
                   </form>
