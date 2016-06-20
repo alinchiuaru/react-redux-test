@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/app';
 import Login from './containers/Login';
-import Users from './containers/Users';
+import Courses from './containers/Courses';
 
 function requireAuth(nextState, replace) {
     if (!localStorage.getItem('user_token')) {
@@ -17,6 +17,6 @@ function requireAuth(nextState, replace) {
 export default (
     <Route path="/" component={App}>
         <Route path="/login" component={Login}/>
-        <Route path="/users" component={Users} onEnter={requireAuth}/>
+        <Route path="/courses" component={Courses} onEnter={requireAuth}/>
     </Route>
 );
