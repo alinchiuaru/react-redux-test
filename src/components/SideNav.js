@@ -17,7 +17,7 @@ const topStyle = {
     width           : '100%',
     backgroundColor : '#FAFAFA',
     borderRadius    : 0,
-    backgroundImage : 'url("http://www.dogtownmedia.com/wp-content/uploads/material-design-android-app-developer.jpg")',
+    backgroundImage : 'url("https://cdn-images-1.medium.com/max/1400/1*278tqw9zNPe2WCAz29Wzdw.jpeg")',
     backgroundSize  : '125% 100%',
     borderRight     : '1px solid #E0E0E0'
 };
@@ -25,7 +25,7 @@ const topStyle = {
 const bottomStyle = {
     height          : '100%',
     width           : '100%',
-    backgroundColor : "#FAFAFA",
+    backgroundColor : "#EEE",
     borderRadius    : 0,
     position        : 'relative',
     display         : 'flex',
@@ -55,7 +55,7 @@ const detailsStyle = {
 const listStyle = {
     'width'     : '100%',
     'marginTop' : '5%',
-    'textAlign' : 'left'
+    'textAlign' : 'left',
 };
 
 const CourseThumbnail = () => (

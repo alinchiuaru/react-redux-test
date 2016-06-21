@@ -3,6 +3,13 @@ import { connect } from 'react-redux';
 import HeaderBar from '../components/HeaderBar';
 import CourseThumbnail from '../components/CourseThumbnail';
 import { fetchCourses } from '../actions/courses';
+import ContentInbox from 'material-ui/svg-icons/content/inbox';
+
+const titleStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    margin: '20px 0',
+};
 
 class Courses extends Component {
     componentWillMount() {
@@ -24,7 +31,11 @@ class Courses extends Component {
     render() {
         return (
             <div class="container-fluid">
-                <h2 class="text-display-2">My Courses</h2>
+                <div style={titleStyle}>
+                    <ContentInbox/>
+                    <h2 class="text-headtitle">My Courses</h2>
+                </div>
+
                 <div class="row">
                     {this.renderCourseThumbnails()}
                 </div>
