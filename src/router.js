@@ -1,6 +1,6 @@
-//@todo: Change name to Router
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
+
 import App from './components/app';
 import Login from './containers/Login';
 import Courses from './containers/Courses';
