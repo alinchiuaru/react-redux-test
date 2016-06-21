@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HeaderBar from '../components/HeaderBar';
+import SideNav from '../components/SideNav';
 import CourseThumbnail from '../components/CourseThumbnail';
 import { fetchCourses } from '../actions/courses';
-
-import LinearProgress from 'material-ui/LinearProgress';
 
 class Courses extends Component {
     componentWillMount() {
@@ -25,8 +24,8 @@ class Courses extends Component {
 
     render() {
         return (
-            <div>
-                <HeaderBar/>
+            <div class="super-container">
+                <SideNav/>
                 <div class="container-fluid">
                     <h2 class="text-display-2">My Courses</h2>
                     <div class="row">
