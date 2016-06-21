@@ -3,7 +3,7 @@ import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 
 import App from './components/app';
 import Login from './containers/Login';
-import Courses from './containers/Courses';
+import Dashboard from './components/Dashboard';
 
 function requireAuth(nextState, replace) {
     if (!localStorage.getItem('user_token')) {
@@ -16,10 +16,14 @@ function requireAuth(nextState, replace) {
 
 export default (
     <Router history={browserHistory}>
-        <Route path="/" component={App}>
-            <Route path="/courses" component={Courses} onEnter={requireAuth}/>
-            <Route path="/courses/:id" onEnter={requireAuth}/>
+        <Route path="/" component={App} onEnter={requireAuth}>
+            <Route path="/dashboard" component={Dashboard} />
+
+            <Route path="/courses">
+                <Route path="/courses/:id" />
+            </Route>
         </Route>
+
         <Route path="/login" component={Login} />
     </Router>
 );

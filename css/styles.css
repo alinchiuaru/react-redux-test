@@ -13,3 +13,11 @@ body {
     height: 100vh;
     display: flex;
 }
+
+.side-nav a {
+    text-decoration: none;
+}
+
+.side-nav-active > div {
+    background-color: #BDBDBD;
+}

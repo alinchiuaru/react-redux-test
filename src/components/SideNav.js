@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
@@ -70,11 +71,9 @@ const CourseThumbnail = () => (
             </div>
 
             <List style={listStyle}>
-              <ListItem primaryText="Dashboard" leftIcon={<ContentInbox />} />
-              <ListItem primaryText="Students" leftIcon={<ActionGrade />} />
-              <ListItem primaryText="Courses" leftIcon={<ContentSend />} />
-              <ListItem primaryText="Stats" leftIcon={<ContentDrafts />} />
-              <ListItem primaryText="Inbox" leftIcon={<ContentInbox />} />
+              <Link to="/dashboard" activeClassName="side-nav-active"> <ListItem primaryText="Dashboard" leftIcon={<ContentInbox />} /> </Link>
+              <Link to="/students" activeClassName="side-nav-active"> <ListItem primaryText="Students" leftIcon={<ActionGrade />} /> </Link>
+              <Link to="/courses" activeClassName="side-nav-active"> <ListItem primaryText="Courses" leftIcon={<ContentSend />} /> </Link>
             </List>
         </Paper>
     </div>

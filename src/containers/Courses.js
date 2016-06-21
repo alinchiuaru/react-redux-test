@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HeaderBar from '../components/HeaderBar';
 import CourseThumbnail from '../components/CourseThumbnail';
 import { fetchCourses } from '../actions/courses';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
@@ -30,15 +29,8 @@ class Courses extends Component {
 
     render() {
         return (
-            <div class="container-fluid">
-                <div style={titleStyle}>
-                    <ContentInbox/>
-                    <h2 class="text-headtitle">My Courses</h2>
-                </div>
-
-                <div class="row">
-                    {this.renderCourseThumbnails()}
-                </div>
+            <div class="row">
+                {this.renderCourseThumbnails()}
             </div>
         );
     }

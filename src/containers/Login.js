@@ -20,7 +20,7 @@ class Login extends Component {
     onSubmit(props) {
         this.props.loginUser(props).then(() => {
             if ( this.props.auth.isAuthenticated ) {
-                this.context.router.push('/courses');
+                this.context.router.push('/dashboard');
             }
         });
     }
