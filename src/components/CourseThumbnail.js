@@ -24,8 +24,9 @@ const descriptionStyle = {
     background : 'white',
     padding    : 15,
     color      : '#999',
-    margin     : 0
+    margin     : 0,
 };
+
 
 
 const CourseThumbnail = (props) => (
@@ -40,7 +41,7 @@ const CourseThumbnail = (props) => (
 
         <Paper style={ descriptionStyle }>
             <h2 class="text-title">{ props.title }</h2>
-            <p class="text-body">{ props.description }</p>
+            <p class="text-body" style={{  textOverflow : 'ellipsis', overflow: 'hidden', whiteSpace: 'pre' }}>{ props.description }</p>
         </Paper>
     </div>
 );

@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class App extends Component {
     render() {
+        console.log(this.props);
         return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div>
