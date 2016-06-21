@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HeaderBar from '../components/HeaderBar';
-import SideNav from '../components/SideNav';
 import CourseThumbnail from '../components/CourseThumbnail';
 import { fetchCourses } from '../actions/courses';
 
@@ -24,13 +23,10 @@ class Courses extends Component {
 
     render() {
         return (
-            <div class="super-container">
-                <SideNav/>
-                <div class="container-fluid">
-                    <h2 class="text-display-2">My Courses</h2>
-                    <div class="row">
-                        {this.renderCourseThumbnails()}
-                    </div>
+            <div class="container-fluid">
+                <h2 class="text-display-2">My Courses</h2>
+                <div class="row">
+                    {this.renderCourseThumbnails()}
                 </div>
             </div>
         );

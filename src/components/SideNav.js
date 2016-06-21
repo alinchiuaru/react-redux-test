@@ -9,7 +9,7 @@ import ActionInfo from 'material-ui/svg-icons/action/info';
 
 const sideNavStyle = {
     background : 'white',
-    width      : '15%',
+    width      : '260px',
     textAlign  : 'center'
 };
 

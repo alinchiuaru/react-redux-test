@@ -1,6 +1,6 @@
+//@todo: Change name to Router
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-
+import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 import App from './components/app';
 import Login from './containers/Login';
 import Courses from './containers/Courses';
@@ -15,9 +15,11 @@ function requireAuth(nextState, replace) {
 }
 
 export default (
-    <Route path="/" component={App}>
-        <Route path="/login" component={Login}/>
-        <Route path="/courses" component={Courses} onEnter={requireAuth}/>
-        <Route path="/courses/:id" onEnter={requireAuth}/>
-    </Route>
+    <Router history={browserHistory}>
+        <Route path="/" component={App}>
+            <Route path="/courses" component={Courses} onEnter={requireAuth}/>
+            <Route path="/courses/:id" onEnter={requireAuth}/>
+        </Route>
+        <Route path="/login" component={Login} />
+    </Router>
 );

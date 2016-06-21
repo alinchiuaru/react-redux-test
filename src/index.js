@@ -20,6 +20,6 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(rootReducer)}>
-    <Router history={browserHistory} routes={routes}/>
+    { routes }
   </Provider>
   , document.querySelector('.root-element'));
