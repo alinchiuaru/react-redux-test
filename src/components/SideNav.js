@@ -8,9 +8,8 @@ import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 
 const sideNavStyle = {
-    background : 'white',
-    width      : '260px',
-    textAlign  : 'center'
+    textAlign  : 'center',
+    padding: 0,
 };
 
 const topStyle = {
@@ -60,7 +59,7 @@ const listStyle = {
 };
 
 const CourseThumbnail = () => (
-    <div style={sideNavStyle}>
+    <div class="side-nav col-md-2 col-xs-3" style={sideNavStyle}>
         <Paper style={topStyle} zDepth={0}>
         </Paper>
         <Paper style={bottomStyle} zDepth={0}>
