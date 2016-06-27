@@ -59,7 +59,7 @@ const listStyle = {
     'textAlign' : 'left',
 };
 
-const CourseThumbnail = () => (
+const SideNav = () => (
     <div class="side-nav col-md-2 col-xs-3" style={sideNavStyle}>
         <Paper style={topStyle} zDepth={0}>
         </Paper>
@@ -80,4 +80,4 @@ const CourseThumbnail = () => (
 );
 
 
-export default CourseThumbnail;
+export default SideNav;

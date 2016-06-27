@@ -41,7 +41,7 @@ export function loginUser(creds) {
 
         return axios.post(`${ROOT_URL}/auth`, creds)
             .then((response) => {
-                if ( !response.data.succcess ) {
+                if ( !response.data.success ) {
                     dispatch( loginError(response.data.message) );
                 } else {
                     localStorage.setItem('user_token', response.data.token);

@@ -10,7 +10,7 @@ const titleStyle = {
     margin: '20px 0',
 };
 
-class Courses extends Component {
+class CoursesList extends Component {
     componentWillMount() {
         this.props.fetchCourses();
     }
@@ -40,4 +40,4 @@ function mapStateToProps(state) {
     return { courses: state.courses };
 }
 
-export default connect(mapStateToProps, { fetchCourses })(Courses);
+export default connect(mapStateToProps, { fetchCourses })(CoursesList);

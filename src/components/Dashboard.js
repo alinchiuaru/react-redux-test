@@ -1,5 +1,5 @@
 import React from 'react';
-import Courses from '../containers/Courses';
+import CoursesList from '../containers/Courses';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 
 const titleStyle = {
@@ -15,7 +15,7 @@ const Dashboard = () => (
             <h2 class="text-headtitle">My Courses</h2>
         </div>
 
-        <Courses />
+        <CoursesList />
     </div>
 );
 
