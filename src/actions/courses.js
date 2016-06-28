@@ -42,27 +42,27 @@ function createCourseSuccess (course) {
 }
 
 
-export function fetchCourses() {
-    return dispatch => {
-        dispatch(requestCourses());
+// export function fetchCourses() {
+//     return dispatch => {
+//         dispatch(requestCourses());
 
-        return axios.get('/courses')
-            .then((response) => {
-                if ( !response.data ) {
-                   console.log('Failed to fetch courses');
-                } else {
-                    dispatch(recieveCourses(response.data.data));
-                }
-            })
-            .catch(err => console.log('Courses error:', err));
-    }
-}
+//         return axios.get('/courses')
+//             .then((response) => {
+//                 if ( !response.data ) {
+//                    console.log('Failed to fetch courses');
+//                 } else {
+//                     dispatch(recieveCourses(response.data.data));
+//                 }
+//             })
+//             .catch(err => console.log('Courses error:', err));
+//     }
+// }
 
 export function fetchMyCourses() {
     return dispatch => {
         dispatch(requestCourses());
 
-        return axios.get('/courses/me')
+        return axios.get('/courses')
             .then((response) => {
                 if ( !response.data ) {
                    console.log('Failed to fetch courses');
