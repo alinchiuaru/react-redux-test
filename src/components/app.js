@@ -7,12 +7,13 @@ import SideNav from '../components/SideNav';
 
 export default class App extends Component {
     render() {
-        console.log(this.props.children);
         return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div class="app-container">
                     <SideNav/>
-                    {this.props.children}
+                    <div style={{width: '100%', display: 'flex'}}>
+                        {this.props.children}
+                    </div>
                 </div>
             </MuiThemeProvider>
         );

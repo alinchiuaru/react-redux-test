@@ -3,6 +3,11 @@ import axios from 'axios';
 export const REQUEST_COURSES = 'REQUEST_COURSES';
 export const RECEIVE_COURSES = 'RECEIVE_COURSES';
 
+export const CREATE_COURSE_START = 'CREATE_COURSE_START';
+export const CREATE_COURSE_SUCCESS = 'CREATE_COURSE_START';
+export const CREATE_COURSE_ERROR= 'CREATE_COURSE_START';
+
+
 const ROOT_URL = 'http://localhost:8077';
 const token = localStorage.getItem('user_token');
 
@@ -21,6 +26,20 @@ function recieveCourses (courses) {
     }
 }
 
+function createCourseStart () {
+    return {
+        type: CREATE_COURSE_START,
+        isFetching: true
+    }
+}
+
+function createCourseSuccess (course) {
+    return {
+        type: CREATE_COURSE_SUCCESS,
+        course
+    }
+}
+
 
 export function fetchCourses() {
     return dispatch => {
@@ -35,5 +54,16 @@ export function fetchCourses() {
                 }
             })
             .catch(err => console.log('Courses error:', err));
+    }
+}
+
+export function createCourse(data) {
+    return dispatch => {
+        dispatch(createCourseStart(data));
+
+        return axios.post('http://localhost:8077/api/courses', data, { headers: {'token': token} })
+            .then( response => {
+                dispatch(createCourseSuccess(response.data));
+            })
     }
 }

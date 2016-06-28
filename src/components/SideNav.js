@@ -73,7 +73,7 @@ const SideNav = () => (
             <List style={listStyle}>
               <Link to="/dashboard" activeClassName="side-nav-active"> <ListItem primaryText="Dashboard" leftIcon={<ContentInbox />} /> </Link>
               <Link to="/students" activeClassName="side-nav-active"> <ListItem primaryText="Students" leftIcon={<ActionGrade />} /> </Link>
-              <Link to="/courses" activeClassName="side-nav-active"> <ListItem primaryText="Courses" leftIcon={<ContentSend />} /> </Link>
+              <Link to="/courses/create" activeClassName="side-nav-active"> <ListItem primaryText="Courses" leftIcon={<ContentSend />} /> </Link>
             </List>
         </Paper>
     </div>
