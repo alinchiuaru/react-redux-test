@@ -1,5 +1,5 @@
 import React from 'react';
-import CoursesList from '../containers/Courses';
+import CoursesList from '../containers/CoursesList';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import TinyMCE from '../components/TinyMCEComponent';
 
@@ -17,11 +17,6 @@ const Dashboard = () => (
         </div>
 
         <CoursesList />
-        <div class="row">
-            <div class="col-md-6">
-                <TinyMCE id={'edit-123'} />
-            </div>
-        </div>
     </div>
 );
 

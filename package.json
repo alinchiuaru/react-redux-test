@@ -18,10 +18,12 @@
     "babel-preset-react": "^6.1.18",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
+    "css-loader": "^0.23.1",
     "jquery": "^3.0.0",
     "jsdom": "^9.2.1",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.1.0",
+    "style-loader": "^0.13.1",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },

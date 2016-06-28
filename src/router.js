@@ -5,6 +5,7 @@ import axios from 'axios'
 import App from './components/app';
 import Login from './containers/Login';
 import Dashboard from './components/Dashboard';
+import CreateCourses from './containers/CoursesCreate';
 
 function requireAuth(nextState, replace) {
     if (!localStorage.getItem('user_token')) {
@@ -21,8 +22,9 @@ export default (
             <Route path="/dashboard" component={Dashboard} />
 
             <Route path="/courses">
-                <Route path="/courses/:id" />
             </Route>
+
+            <Route path="/courses/create" component={CreateCourses} />
         </Route>
 
         <Route path="/login" component={Login} />
