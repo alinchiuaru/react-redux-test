@@ -66,8 +66,8 @@ const SideNav = () => (
         <Paper style={bottomStyle} zDepth={0}>
             <Paper style={circleStyle} circle={true} zDepth={0}></Paper>
             <div style={detailsStyle}>
-                <h2 class="text-headline">Alin Chiuaru</h2>
-                <h4 class="text-subhead">alin.chiuaru@gmail.com</h4>
+                <h2 class="text-headline">Firstname Lastname</h2>
+                <h4 class="text-subhead">firstname.lastname@email.com</h4>
             </div>
 
             <List style={listStyle}>

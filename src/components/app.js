@@ -11,7 +11,7 @@ export default class App extends Component {
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div class="app-container">
                     <SideNav/>
-                    <div style={{width: '100%', display: 'flex'}}>
+                    <div style={{width: '100%'}}>
                         {this.props.children}
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CourseThumbnail from '../components/CourseThumbnail';
-import { fetchCourses } from '../actions/courses';
+import { fetchMyCourses } from '../actions/courses';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 
 const titleStyle = {
@@ -12,7 +12,7 @@ const titleStyle = {
 
 class CoursesList extends Component {
     componentWillMount() {
-        this.props.fetchCourses();
+        this.props.fetchMyCourses();
     }
 
     renderCourseThumbnails() {
@@ -40,4 +40,4 @@ function mapStateToProps(state) {
     return { courses: state.courses };
 }
 
-export default connect(mapStateToProps, { fetchCourses })(CoursesList);
+export default connect(mapStateToProps, { fetchMyCourses })(CoursesList);
