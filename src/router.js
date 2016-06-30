@@ -26,7 +26,8 @@ export default (
                 <Route path="/courses/:courseId" component={CoursePage} />
             </Route>
 
-            <Route path="/courses/create" component={CoursesCreate} />
+            <Route path="/create/course" component={CoursesCreate} />
+
         </Route>
 
         <Route path="/login" component={Login} />

@@ -1,0 +1,20 @@
+{
+  "answers": [
+    {
+      "answer": "A",
+      "correct": true
+    },
+    {
+      "answer": "B",
+      "correct": true
+    },
+    {
+      "answer": "C",
+      "correct": true
+    },
+    {
+      "answer": "D",
+      "correct": false
+    }
+  ]
+}
