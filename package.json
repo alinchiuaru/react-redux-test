@@ -37,10 +37,10 @@
     "react-redux": "^4.0.0",
     "react-router": "^2.0.0-rc5",
     "react-tap-event-plugin": "^1.0.0",
+    "react-tinymce": "^0.5.1",
     "redux": "^3.0.4",
     "redux-form": "^5.2.5",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.0.1",
-    "tinymce": "^4.3.13"
+    "redux-thunk": "^2.0.1"
   }
 }

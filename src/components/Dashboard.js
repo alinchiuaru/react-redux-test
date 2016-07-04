@@ -1,7 +1,7 @@
 import React from 'react';
 import CoursesList from '../containers/CoursesList';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
-import TinyMCE from '../components/TinyMCEComponent';
+import TinyMCE from 'react-tinymce';
 import Divider from 'material-ui/Divider';
 
 const titleStyle = {
