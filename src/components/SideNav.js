@@ -14,7 +14,7 @@ const sideNavStyle = {
 };
 
 const topStyle = {
-    height          : '15%',
+    height          : '20%',
     width           : '100%',
     backgroundColor : '#FAFAFA',
     borderRadius    : 0,
@@ -26,7 +26,7 @@ const topStyle = {
 const bottomStyle = {
     height          : '100%',
     width           : '100%',
-    backgroundColor : "#EEE",
+    backgroundColor : "#FAFAFA",
     borderRadius    : 0,
     position        : 'relative',
     display         : 'flex',

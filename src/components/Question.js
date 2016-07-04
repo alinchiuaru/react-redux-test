@@ -8,7 +8,7 @@ function renderChoices (choices, onCheck) {
     const answers = choices.map( element => {
             return (
                 <Checkbox
-                    class="text-headline"
+                    class="text text-headline"
                     checked={element.correct}
                     value={element.answer}
                     label={element.answer}
@@ -31,7 +31,7 @@ function renderChoices (choices, onCheck) {
 const Question = (props) => {
     return (
         <div>
-            <h2 class="text-headline">
+            <h2 class="text text-headline">
                 {props.question.title}
             </h2>
 

@@ -8,6 +8,15 @@ import Question from '../components/Question';
 
 import { fetchQuizProgress, selectQuestion, answerQuestion, skipQuestion, markAnswer, sendQuestionAnswer, fetchQuiz } from '../actions/quizzes';
 
+const buttonStyle = {
+    label: {
+        lineHeight: '50px', fontWeight: 600
+    },
+    button: {
+        width: '150px', height: '50px', margin: '20px'
+    }
+};
+
 class QuizPractice extends Component {
     static contextTypes = {
         router: PropTypes.object
@@ -52,12 +61,12 @@ class QuizPractice extends Component {
         return (
             <div class="container-fluid">
                 <div style={{ margin: '20px 0' }}>
-                    <h2 class="text-headline">{this.props.quizPractice.quiz.name}</h2>
-                    <h3 class="text-subhead">{this.props.quizPractice.quiz.description}</h3>
+                    <h2 class="text text-title">{this.props.quizPractice.quiz.name}</h2>
+                    <h3 class="text text-subhead">{this.props.quizPractice.quiz.description}</h3>
                 </div>
                 <Divider inset={false} />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <Paper class="col-md-12" zDepth={2} style={{ margin: '50px', padding: '30px', textAlign: 'center' }}>
+                    <Paper class="col-md-12" zDepth={2} style={{ margin: '50px', padding: '30px', textAlign: 'center', backgroundColor: '#FAFAFA', border: '1px solid #E0E0E0' }}>
                        { this.props.quizPractice.selectedQuestion ?
                         <Question question={this.props.quizPractice.selectedQuestion} onCheck={this.props.markAnswer} /> : '' }
 
@@ -65,14 +74,14 @@ class QuizPractice extends Component {
                             label="Submit" secondary={true}
                             disabled={this.anyAnswerSelected()}
                             onMouseDown={ () => this.answerQuestion() }
-                            style={{ width: '150px', height: '50px', margin: '20px'}}
-                            labelStyle={{lineHeight: '50px'}} />
+                            style={buttonStyle.button}
+                            labelStyle={buttonStyle.label} />
 
                         <RaisedButton
                             disabled={this.props.quizPractice.questionsList.length <= 1}
                             onMouseDown={ () => this.props.skipQuestion(0) } label="Skip" secondary={true}
-                            style={{ width: '150px', height: '50px', margin: '20px'}}
-                            labelStyle={{lineHeight: '50px'}} />
+                            style={buttonStyle.button}
+                            labelStyle={buttonStyle.label} />
                     </Paper>
                 </div>
             </div>

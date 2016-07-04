@@ -41,6 +41,7 @@ export function loginUser(creds) {
 
         return axios.post(`${ROOT_URL}/auth`, creds)
             .then((response) => {
+                console.log(response);
                 if ( !response.data.success ) {
                     dispatch( loginError(response.data.message) );
                 } else {

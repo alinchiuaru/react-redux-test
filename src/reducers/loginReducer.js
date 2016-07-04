@@ -5,7 +5,7 @@ const initialState = { isFetching: false, isAuthenticated: localStorage.getItem(
 export default function auth(state = initialState, action) {
     switch ( action.type ) {
         case LOGIN_REQUEST:
-            return { ...state, isFetching: true, isAuthenticated : false, user: action.creds.username };
+            return { ...state, isFetching: true, isAuthenticated: false, user: action.creds.username };
         case LOGIN_SUCCESS:
             return {...state, isFetching: false, isAuthenticated: true, errorMessage: ''};
         case LOGIN_FAILURE:

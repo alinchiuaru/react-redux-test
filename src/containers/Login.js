@@ -10,11 +10,9 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import * as Colors from 'material-ui/styles/colors';
 
-console.log(Colors);
-
 const headerStyle = {
-    'minHeight': '200px',
-    'width': '100%',
+    minHeight: '200px',
+    width: '100%',
     backgroundImage: 'url("http://www.lirent.net/wp-content/uploads/2014/10/Android-Lollipop-wallpapers-p-800x500.png")',
     backgroundSize: '100%',
 }

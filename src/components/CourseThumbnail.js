@@ -21,9 +21,9 @@ const computeLogoStyle = (props) => {
 
 const descriptionStyle = {
     height     : 100,
-    background : 'white',
+    background : '#FAFAFA',
     padding    : 15,
-    color      : '#999',
+    color      : '#545555',
     margin     : 0,
 };
 
