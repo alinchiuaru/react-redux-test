@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMyCourses } from '../actions/courses';
+import { fetchCourse } from '../actions/courses';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import Add from 'material-ui/svg-icons/content/add';
@@ -10,13 +10,36 @@ const textStyle = {
     fontSize: '18px',
 };
 
-export default class CoursePage extends Component {
-    constructor(props) {
-        super(props);
+class CoursePage extends Component {
+    componentDidMount() {
+        this.props.fetchCourse(this.props.params.courseId);
+    }
+
+    renderQuizzes() {
+        return this.props.selectedCourse.quizzes.map( quiz => {
+            return (
+                <Paper key={quiz.id} class="col-md-2 tile" zDepth={2}>
+                    <div style={{ marginLeft: '5px', marginBottom: '10px', color: '#FFFFFF'}}>
+                        <p style={textStyle}>{quiz.name}</p>
+                    </div>
+                </Paper>
+            );
+        });
+    }
+
+    renderChapters() {
+        return this.props.selectedCourse.chapters.map( chapter => {
+            return (
+                <Paper key={chapter.id} class="col-md-2 tile tile-chapter" zDepth={2}>
+                    <div style={{ marginLeft: '5px', marginBottom: '10px', color: '#FFFFFF'}}>
+                        <p style={textStyle}>{chapter.name}</p>
+                    </div>
+                </Paper>
+            );
+        });
     }
 
     render() {
-        console.log(this.props);
         return (
             <div class="container-fluid">
                 <div id="quizzes">
@@ -30,38 +53,33 @@ export default class CoursePage extends Component {
                             </div>
                         </Paper>
 
-                        <Paper class="col-md-2 tile" zDepth={2}>
-                            <div style={{ marginLeft: '5px', marginBottom: '10px', color: '#FFFFFF'}}>
-                                <p style={textStyle}> Quiz title goes here </p>
+                        {this.props.selectedCourse.id ? this.renderQuizzes(): ''}
+                    </div>
+                </div>
+
+                <div id="chapters">
+                    <h2 class="text-headtitle">Chapters</h2>
+                    <Divider inset={false} />
+
+                    <div class="row between-xs">
+                        <Paper class="col-md-2 tile tile-add tile-chapter" zDepth={2}>
+                            <div style={{width: '100%', height:'100%'}}>
+                                <Add style={{width: '100%', height:'100%'}} color={'#FAFAFA'}/>
                             </div>
                         </Paper>
 
-                        <Paper class="col-md-2 tile" zDepth={2}>
-                            <div style={{ marginLeft: '5px', marginBottom: '10px', color: '#FFFFFF'}}>
-                                <p style={textStyle}> Quiz title goes here </p>
-                            </div>
-                        </Paper>
-
-                        <Paper class="col-md-2 tile" zDepth={2}>
-                            <div style={{ marginLeft: '5px', marginBottom: '10px', color: '#FFFFFF', textAlign: 'left'}}>
-                                <p style={textStyle}> Quiz title goes here </p>
-                            </div>
-                        </Paper>
-
-                        <Paper class="col-md-2 tile" zDepth={2}>
-                            <div style={{ marginLeft: '5px', marginBottom: '10px', color: '#FFFFFF', textAlign: 'left'}}>
-                                <p style={textStyle}> Quiz title goes here </p>
-                            </div>
-                        </Paper>
-
-                        <Paper class="col-md-2 tile" zDepth={2}>
-                            <div style={{ marginLeft: '5px', marginBottom: '10px', color: '#FFFFFF', textAlign: 'left'}}>
-                                <p style={textStyle}> Quiz title goes here </p>
-                            </div>
-                        </Paper>
+                        {this.props.selectedCourse.id ? this.renderChapters(): ''}
                     </div>
                 </div>
             </div>
         );
     }
 }
+
+function mapStateToProps (state) {
+    return {
+        selectedCourse: state.courses.selectedCourse
+    }
+}
+
+export default connect(mapStateToProps, { fetchCourse })(CoursePage);

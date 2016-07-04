@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+
 import auth from './loginReducer';
 import courses from './coursesReducer';
 import quizzes from './quizzesReducer';

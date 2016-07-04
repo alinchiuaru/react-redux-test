@@ -49,6 +49,15 @@ body {
     filter: grayscale(100%);
 }
 
+.tile.tile-add svg {
+    -webkit-filter: drop-shadow( 2px 2px 5px #000 );
+            filter: drop-shadow( 2px 2px 5px #000 );
+}
+
+.tile.tile-chapter {
+    background-image: url("http://www.droid-life.com/wp-content/uploads/2014/10/bkg_09_september.jpg");
+}
+
 .tile:hover{
     cursor: pointer;
     opacity: 1;

@@ -7,6 +7,9 @@ export const CREATE_COURSE_START = 'CREATE_COURSE_START';
 export const CREATE_COURSE_SUCCESS = 'CREATE_COURSE_START';
 export const CREATE_COURSE_ERROR= 'CREATE_COURSE_START';
 
+export const REQUEST_COURSE = 'REQUEST_COURSE';
+export const RECEIVE_COURSE = 'RECEIVE_COURSE';
+
 
 const AUTH_TOKEN = localStorage.getItem('user_token');
 axios.defaults.baseURL = 'http://localhost:8077/api';
@@ -41,22 +44,30 @@ function createCourseSuccess (course) {
     }
 }
 
+function requestCourse () {
+    return {
+        type: REQUEST_COURSE
+    }
+}
 
-// export function fetchCourses() {
-//     return dispatch => {
-//         dispatch(requestCourses());
+function receiveCourse (data) {
+    return {
+        type: RECEIVE_COURSE,
+        data
+    }
+}
 
-//         return axios.get('/courses')
-//             .then((response) => {
-//                 if ( !response.data ) {
-//                    console.log('Failed to fetch courses');
-//                 } else {
-//                     dispatch(recieveCourses(response.data.data));
-//                 }
-//             })
-//             .catch(err => console.log('Courses error:', err));
-//     }
-// }
+export function fetchCourse (courseId) {
+    return dispatch => {
+        dispatch(requestCourse());
+
+        return axios.get(`/courses/${courseId}`)
+            .then(response => {
+                dispatch(receiveCourse(response.data.data));
+            });
+    }
+}
+
 
 export function fetchMyCourses() {
     return dispatch => {
