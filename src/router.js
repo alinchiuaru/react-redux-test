@@ -29,7 +29,9 @@ export default (
             </Route>
 
             <Route path="/quizzes">
+                <Route path="/quiz/:quizId/start" />
                 <Route path="/quiz/:quizId/practice" component={QuizPractice} />
+                <Route path="/quiz/:quizId/finish" />
             </Route>
 
         </Route>

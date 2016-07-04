@@ -1,57 +1,78 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import Checkbox from 'material-ui/Checkbox';
+import Divider from 'material-ui/Divider';
 
-import { fetchQuiz, selectQuestion, answerQuestion, skipQuestion } from '../actions/quizzes';
+import Question from '../components/Question';
+
+import { fetchQuizProgress, selectQuestion, answerQuestion, skipQuestion, markAnswer, sendQuestionAnswer, fetchQuiz } from '../actions/quizzes';
 
 class QuizPractice extends Component {
+    static contextTypes = {
+        router: PropTypes.object
+    };
+
     componentDidMount() {
         this.props.fetchQuiz(this.props.routeParams.quizId)
             .then(() => {
-                this.props.selectQuestion(0);
+                this.props.fetchQuizProgress(this.props.routeParams.quizId)
+                        .then(() => {
+                            this.props.selectQuestion(0);
+                        });
             });
     }
 
-    renderAnswers() {
-        const answersData = JSON.parse(this.props.quizPractice.selectedQuestion.questionData).answers;
+    componentWillReceiveProps(nextProps) {
+        if ( nextProps.quizPractice.finished ) {
+            this.context.router.push(`/quiz/${this.props.routeParams.quizId}/finish`);
+        }
+    }
 
-        const answers = answersData.map(function(element) {
-            return (
-                <Checkbox
-                    class="text-headline"
-                    value={element.answer}
-                    label={element.answer}
-                    key={element.answer}
-                    iconStyle={{ width: '36px', height: '36px' }}
-                  />
-            );
-        });
+    anyAnswerSelected() {
+        if ( this.props.quizPractice.finished ) {
+            return false;
+        }
 
-        return (
-            <div>
-                {answers}
-            </div>
-        );
+        const questionDataArray = this.props.quizPractice.selectedQuestion.questionData || [];
+
+        return questionDataArray.length === questionDataArray.filter( element => element.correct == false ).length;
+    }
+
+    answerQuestion() {
+        let answerObject = {
+            id: this.props.quizPractice.selectedQuestion.id,
+            answers: this.props.quizPractice.selectedQuestion.questionData
+        };
+
+        this.props.sendQuestionAnswer(answerObject);
     }
 
     render() {
         return (
             <div class="container-fluid">
+                <div style={{ margin: '20px 0' }}>
+                    <h2 class="text-headline">{this.props.quizPractice.quiz.name}</h2>
+                    <h3 class="text-subhead">{this.props.quizPractice.quiz.description}</h3>
+                </div>
+                <Divider inset={false} />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Paper class="col-md-12" zDepth={2} style={{ margin: '50px', padding: '30px', textAlign: 'center' }}>
-                        <h2 class="text-headline">
-                            {this.props.quizPractice.selectedQuestion.title}
-                        </h2>
+                       { this.props.quizPractice.selectedQuestion ?
+                        <Question question={this.props.quizPractice.selectedQuestion} onCheck={this.props.markAnswer} /> : '' }
 
-                        <div style={{ padding: '50px 0px', textAlign: 'left' }}>
-                            {this.props.quizPractice.selectedQuestion.questionData ? this.renderAnswers() : ''}
-                        </div>
+                        <RaisedButton
+                            label="Submit" secondary={true}
+                            disabled={this.anyAnswerSelected()}
+                            onMouseDown={ () => this.answerQuestion() }
+                            style={{ width: '150px', height: '50px', margin: '20px'}}
+                            labelStyle={{lineHeight: '50px'}} />
 
-                        <RaisedButton label="Submit" secondary={true} style={{ width: '150px', height: '50px', margin: '20px'}} labelStyle={{lineHeight: '50px'}} />
-                        <RaisedButton onMouseDown={ () => this.props.skipQuestion(0) } label="Skip" secondary={true} style={{ width: '150px', height: '50px', margin: '20px'}} labelStyle={{lineHeight: '50px'}} />
+                        <RaisedButton
+                            disabled={this.props.quizPractice.questionsList.length <= 1}
+                            onMouseDown={ () => this.props.skipQuestion(0) } label="Skip" secondary={true}
+                            style={{ width: '150px', height: '50px', margin: '20px'}}
+                            labelStyle={{lineHeight: '50px'}} />
                     </Paper>
                 </div>
             </div>
@@ -63,4 +84,4 @@ function mapStateToProps (state) {
     return { quizPractice: state.quizPractice }
 }
 
-export default connect(mapStateToProps, { fetchQuiz, selectQuestion, answerQuestion, skipQuestion })(QuizPractice);
+export default connect(mapStateToProps, { fetchQuizProgress, selectQuestion, answerQuestion, skipQuestion, markAnswer, sendQuestionAnswer, fetchQuiz })(QuizPractice);
