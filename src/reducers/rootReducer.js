@@ -5,6 +5,7 @@ import auth from './loginReducer';
 import courses from './coursesReducer';
 import quizzes from './quizzesReducer';
 import quizPractice from './quizPracticeReducer';
+import users from './usersReducer';
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     courses: courses,
     quizzes: quizzes,
     quizPractice: quizPractice,
+    users: users,
 });
 
 export default rootReducer;

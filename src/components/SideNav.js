@@ -59,15 +59,15 @@ const listStyle = {
     'textAlign' : 'left',
 };
 
-const SideNav = () => (
+const SideNav = (props) => (
     <div class="side-nav col-md-2 col-xs-3" style={sideNavStyle}>
         <Paper style={topStyle} zDepth={0}>
         </Paper>
         <Paper style={bottomStyle} zDepth={0}>
             <Paper style={circleStyle} circle={true} zDepth={0}></Paper>
             <div style={detailsStyle}>
-                <h2 class="text-headline">Firstname Lastname</h2>
-                <h4 class="text-subhead">firstname.lastname@email.com</h4>
+                <h2 class="text-headline">{props.user.username}</h2>
+                <h4 class="text-subhead">{props.user.email}</h4>
             </div>
 
             <List style={listStyle}>

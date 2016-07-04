@@ -7,14 +7,29 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const styles = {
-   margin: '20px',
+const formHolderStyle = {
+    margin: '100px 0px',
+    textAlign: 'center'
 };
 
 const holderStyles = {
-    alignSelf: 'center',
-    margin: '0 auto',
-    textAlign: 'center'
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#FAFAFA'
+};
+
+const previewStyle = {
+    header: {
+        height: '300px',
+        backgroundImage: 'url("http://www.dogtownmedia.com/wp-content/uploads/material-design-android-app-developer.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: '50%',
+        color: '#ffffff',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+    }
 };
 
 class CoursesCreate extends Component {
@@ -33,43 +48,53 @@ class CoursesCreate extends Component {
 
     render() {
         const { fields: { title, description, logo }, handleSubmit } = this.props;
-
         return (
-            <div class="col-md-6 col-xs-12" style={holderStyles}>
-                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                    <div style={styles}>
-                        <TextField
-                          hintText="Title"
-                          type="text"
-                          fullWidth={true}
-                          {...title}
-                          required
-                        />
-                    </div>
+            <div class="container-fluid">
+                <Paper zDepth={2} style={holderStyles}>
+                    <Paper class="col-md-12" style={previewStyle.header} zDepth={0}>
+                        <div>
+                            <h1 class="text-display-1">{ title.value? title.value: 'Course title' }</h1>
+                            <h1 class="text-headline">{ description.value? description.value: 'Course description' }</h1>
+                        </div>
+                    </Paper>
 
-                    <div style={styles}>
-                        <TextField
-                          hintText="Description"
-                          type="text"
-                          fullWidth={true}
-                          {...description}
-                          required
-                        />
-                    </div>
+                    <div class="col-md-12 col-xs-12" style={formHolderStyle}>
+                        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                            <div>
+                                <TextField
+                                  hintText="Title"
+                                  type="text"
+                                  fullWidth={true}
+                                  {...title}
+                                  required
+                                />
+                            </div>
 
-                     <div style={styles}>
-                        <TextField
-                          hintText="Logo Url"
-                          type="text"
-                          fullWidth={true}
-                          {...logo}
-                        />
-                    </div>
+                            <div>
+                                <TextField
+                                  hintText="Description"
+                                  type="text"
+                                  fullWidth={true}
+                                  {...description}
+                                  required
+                                />
+                            </div>
 
-                    <div>
-                        <RaisedButton primary={true} type="submit" label="Submit"/>
+                             <div>
+                                <TextField
+                                  hintText="Logo Url"
+                                  type="text"
+                                  fullWidth={true}
+                                  {...logo}
+                                />
+                            </div>
+
+                            <div style={{ marginTop: '50px' }}>
+                                <RaisedButton primary={true} type="submit" label="Submit"/>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </Paper>
             </div>
         );
     }

@@ -10,11 +10,6 @@ export const CREATE_COURSE_ERROR= 'CREATE_COURSE_START';
 export const REQUEST_COURSE = 'REQUEST_COURSE';
 export const RECEIVE_COURSE = 'RECEIVE_COURSE';
 
-
-const AUTH_TOKEN = localStorage.getItem('user_token');
-axios.defaults.baseURL = 'http://localhost:8077/api';
-axios.defaults.headers.common['token'] = AUTH_TOKEN;
-
 function requestCourses () {
     return {
         type: REQUEST_COURSES,
