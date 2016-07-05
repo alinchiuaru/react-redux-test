@@ -4,9 +4,9 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 
-import Question from '../components/Question';
+import Question from '../../components/Question';
 
-import { fetchQuizProgress, selectQuestion, answerQuestion, skipQuestion, markAnswer, sendQuestionAnswer, fetchQuiz } from '../actions/quizzes';
+import { fetchQuizProgress, selectQuestion, answerQuestion, skipQuestion, markAnswer, sendQuestionAnswer, fetchQuiz } from '../../actions/quizzes';
 
 const buttonStyle = {
     label: {

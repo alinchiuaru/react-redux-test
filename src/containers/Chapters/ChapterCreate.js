@@ -73,7 +73,7 @@ export default class ChapterCreate extends Component {
         const { title, description, lectureNote } = this.state;
         axios.post('/chapters', { title, description, lectureNote, courseId: this.props.params.courseId })
             .then( () => {
-                this.context.router.push(`/courses/${this.props.params.courseId}`);
+                this.context.router.push(`/courses/${this.props.params.courseId}/manage`);
             });
     }
 

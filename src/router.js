@@ -5,10 +5,11 @@ import axios from 'axios'
 import App from './components/app';
 import Login from './containers/Login';
 import Dashboard from './components/Dashboard';
-import CoursesCreate from './containers/CoursesCreate';
-import CoursePage from './containers/CoursePage';
-import QuizPractice from './containers/QuizPractice';
-import ChapterCreate from './containers/ChapterCreate';
+
+import CoursesCreate from './containers/Courses/CoursesCreate';
+import CourseManage from './containers/Courses/CourseManage';
+import QuizPractice from './containers/Quizzes/QuizPractice';
+import ChapterCreate from './containers/Chapters/ChapterCreate';
 
 function requireAuth(nextState, replace) {
     if (!localStorage.getItem('user_token')) {
@@ -25,7 +26,7 @@ export default (
             <Route path="/dashboard" component={Dashboard} />
 
             <Route path="/courses">
-                <Route path="/courses/:courseId" component={CoursePage} />
+                <Route path="/courses/:courseId/manage" component={CourseManage} />
                 <Route path="/create/course" component={CoursesCreate} />
             </Route>
 

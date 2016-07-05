@@ -1,5 +1,5 @@
 import React from 'react';
-import CoursesList from '../containers/CoursesList';
+import CoursesList from '../containers/Courses/CoursesList';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import TinyMCE from 'react-tinymce';
 import Divider from 'material-ui/Divider';

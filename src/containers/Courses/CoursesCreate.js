@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { createCourse } from '../actions/courses';
+import { createCourse } from '../../actions/courses';
 
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
