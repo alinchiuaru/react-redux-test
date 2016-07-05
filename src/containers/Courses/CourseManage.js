@@ -16,6 +16,11 @@ const textStyle = {
     fontSize: '18px',
 };
 
+const tileStyle = {
+    margin: '10px',
+    color: '#FFFFFF'
+};
+
 class CourseManage extends Component {
     constructor(props) {
         super(props);
@@ -51,7 +56,7 @@ class CourseManage extends Component {
         return this.props.selectedCourse.quizzes.map( quiz => {
             return (
                 <Paper key={quiz.id} class="col-md-2 tile" zDepth={2}>
-                    <div style={{ marginLeft: '5px', marginBottom: '10px', color: '#FFFFFF'}}>
+                    <div style={tileStyle}>
                         <p style={textStyle}>{quiz.name}</p>
                     </div>
                 </Paper>
@@ -63,7 +68,7 @@ class CourseManage extends Component {
         return this.props.selectedCourse.chapters.map( chapter => {
             return (
                 <Paper key={chapter.id} class="col-md-2 tile tile-chapter" zDepth={2}>
-                    <div style={{ marginLeft: '5px', marginBottom: '10px', color: '#FFFFFF'}}>
+                    <div style={tileStyle}>
                         <p style={textStyle}>{chapter.title}</p>
                     </div>
                 </Paper>
