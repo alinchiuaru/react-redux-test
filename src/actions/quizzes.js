@@ -11,6 +11,8 @@ export const ANSWER_QUESTION = 'ANSWER_QUESTION';
 export const SKIP_QUESTION = 'SKIP_QUESTION';
 export const ADD_ANSWER = 'ADD_ANSWER';
 
+export const CREATE_QUIZ = 'CREATE_QUIZ';
+
 
 export function selectQuestion (index) {
     return {
@@ -104,5 +106,20 @@ export function sendQuestionAnswer (question) {
             .then(() => {
                 dispatch(answerQuestion(0)); //0 for now, probabily remove it
             });
+    }
+}
+
+function addQuiz() {
+    return {
+        type: CREATE_QUIZ
+    }
+}
+
+export function createQuiz(data) {
+    return dispatch => {
+        return axios.post('/quizzes', data)
+            .then( response => {
+                dispatch(addQuiz());
+            })
     }
 }
