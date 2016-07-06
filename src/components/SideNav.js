@@ -11,16 +11,22 @@ import ActionInfo from 'material-ui/svg-icons/action/info';
 const sideNavStyle = {
     textAlign  : 'center',
     padding: 0,
+    width: '24%',
+    display: 'flex',
+    flexDirection: 'column',
+    flex: '1 1 auto'
 };
 
 const topStyle = {
-    height          : '20%',
+    height          : '25%',
     width           : '100%',
     backgroundColor : '#FAFAFA',
-    borderRadius    : 0,
-    backgroundImage : 'url("https://cdn-images-1.medium.com/max/1400/1*278tqw9zNPe2WCAz29Wzdw.jpeg")',
-    backgroundSize  : '125% 100%',
-    borderRight     : '1px solid #E0E0E0'
+    backgroundImage : 'url("https://material-design.storage.googleapis.com/publish/material_v_8/material_ext_publish/0Bx4BSt6jniD7bng4eEdEaXBiMXc/style_imagery_bestpractices_focus1.png")',
+    backgroundSize  : '100%',
+    display         : 'flex',
+    flexDirection   : 'column',
+    alignItems      : 'center',
+    justifyContent  : 'center'
 };
 
 const bottomStyle = {
@@ -31,52 +37,44 @@ const bottomStyle = {
     position        : 'relative',
     display         : 'flex',
     flexDirection   : 'column',
-    borderRight     : '1px solid #E0E0E0'
 };
 
 const circleStyle = {
-    width           : '150px',
-    height          : '150px' ,
+    width           : '100px',
+    height          : '100px' ,
     backgroundColor : '#FAFAFA',
-    position        : 'absolute',
-    bottom          : 'calc(100% - 75px)',
-    left            : 'calc(50% - 80px)',
-    backgroundImage : 'url("http://www.omgubuntu.co.uk/wp-content/uploads/2014/08/can.jpg")',
+    backgroundImage : 'url("http://nmelp3rtl8l2tnuwd2blzv3ecu.wpengine.netdna-cdn.com/wp-content/themes/nationswell/img/placeholder.jpg")',
     backgroundSize  : 'cover',
-    border          : '5px solid #FAFAFA',
 };
 
 
 const detailsStyle = {
-    'marginTop' : '30%',
-    'textAlign' : 'center',
-    'color'     : '#9E9E9E'
+    'color'     : '#ffffff'
 };
 
 const listStyle = {
     'width'     : '100%',
     'marginTop' : '5%',
-    'textAlign' : 'left',
 };
 
 const SideNav = (props) => (
-    <div class="side-nav col-md-2 col-xs-3" style={sideNavStyle}>
-        <Paper style={topStyle} zDepth={0}>
-        </Paper>
-        <Paper style={bottomStyle} zDepth={0}>
+    <Paper class="side-nav" style={sideNavStyle} zDepth={1}>
+        <Paper style={topStyle} zDepth={1}>
             <Paper style={circleStyle} circle={true} zDepth={0}></Paper>
             <div style={detailsStyle}>
                 <h2 class="text-headline">{props.user.username}</h2>
                 <h4 class="text-subhead">{props.user.email}</h4>
             </div>
+        </Paper>
 
+        <Paper style={bottomStyle} zDepth={0}>
             <List style={listStyle}>
               <Link to="/dashboard" activeClassName="side-nav-active"> <ListItem primaryText="Dashboard" leftIcon={<ContentInbox />} /> </Link>
               <Link to="/students" activeClassName="side-nav-active"> <ListItem primaryText="Students" leftIcon={<ActionGrade />} /> </Link>
               <Link to="/create/course" activeClassName="side-nav-active"> <ListItem primaryText="Courses" leftIcon={<ContentSend />} /> </Link>
             </List>
         </Paper>
-    </div>
+    </Paper>
 );
 
 

@@ -6,7 +6,7 @@ h1,h2,h3,h4,p {
 }
 
 body {
-    background-color: #FFFFFF;
+    background-color: #EEEEEE;
     color: #545555;
 }
 
@@ -19,8 +19,8 @@ body {
 }
 
 .app-container {
-    height: 100vh;
     display: flex;
+    height: 100vh;
 }
 
 .side-nav a {
@@ -32,7 +32,7 @@ body {
 }
 
 .background {
-    background-color: #FAFAFA;
+    background-color: #EEEEEE;
 }
 
 .text {

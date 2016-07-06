@@ -10,7 +10,7 @@ import Divider from 'material-ui/Divider';
 
 import axios from 'axios';
 const formHolderStyle = {
-    margin: '100px 0px',
+    margin: '20px 0px',
     textAlign: 'center'
 };
 
@@ -23,9 +23,6 @@ const holderStyles = {
 const previewStyle = {
     header: {
         height: '200px',
-        // backgroundImage: 'url("http://www.dogtownmedia.com/wp-content/uploads/material-design-android-app-developer.jpg")',
-        // backgroundSize: 'cover',
-        // backgroundPosition: '50%',
         backgroundColor: '#009688',
         color: '#ffffff',
         display: 'flex',
@@ -81,13 +78,6 @@ export default class ChapterCreate extends Component {
         return (
             <div class="container-fluid">
                 <Paper zDepth={2} style={holderStyles}>
-                    <Paper class="col-md-12" style={previewStyle.header} zDepth={0}>
-                        <div>
-                            <h1 class="text-display-1">{ this.state.title ? this.state.title : 'Title' }</h1>
-                            <h1 class="text-headline">{ this.state.description ? this.state.description : 'Description' }</h1>
-                        </div>
-                    </Paper>
-
                     <div class="col-md-12 col-xs-12" style={formHolderStyle}>
                         <form onSubmit={this.handleSubmit}>
                             <div>

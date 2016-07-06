@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCourse } from '../../actions/courses';
-import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 import ActiveTabs from '../../components/ActiveTabs';
 
 import Paper from 'material-ui/Paper';
@@ -55,7 +55,7 @@ class CourseManage extends Component {
     renderQuizzes() {
         return this.props.selectedCourse.quizzes.map( quiz => {
             return (
-                <Paper key={quiz.id} class="col-md-2 tile" zDepth={2}>
+                <Paper key={quiz.id} class="col-md-2 tile" zDepth={2} onClick={ () => browserHistory.push(`/quiz/${quiz.id}/manage`) }>
                     <div style={tileStyle}>
                         <p style={textStyle}>{quiz.name}</p>
                     </div>
@@ -84,12 +84,10 @@ class CourseManage extends Component {
                 <div class="container-fluid">
                     <div id="chapters" style={{ marginTop: '20px' }} class={this.state.activeTab !== 'chapters' ? 'hidden' : ''} >
                         <div class="row">
-                            <Paper class="col-md-2 tile tile-add tile-chapter" zDepth={2}>
-                                <Link to={`/courses/${this.props.params.courseId}/chapter/add`}>
-                                    <div style={{width: '100%', height:'100%'}}>
-                                        <Add style={{width: '100%', height:'100%'}} color={'#FAFAFA'}/>
-                                    </div>
-                                </Link>
+                            <Paper class="col-md-2 tile tile-add tile-chapter" zDepth={2} onClick={ () => browserHistory.push(`/courses/${this.props.params.courseId}/chapter`) }>
+                                <div style={{width: '100%', height:'100%'}}>
+                                    <Add style={{width: '100%', height:'100%'}} color={'#FAFAFA'}/>
+                                </div>
                             </Paper>
 
                             {this.props.selectedCourse.id ? this.renderChapters(): ''}

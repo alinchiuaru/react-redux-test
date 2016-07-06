@@ -6,7 +6,7 @@ function renderTabs (tabs) {
         return (
             <Tab
                 key={`_${tab.value}_`}
-                label={tab.value.toUpperCase()}
+                label={tab.label ? tab.label : tab.value.toUpperCase()}
                 value={tab.value}
                 icon={tab.icon}
             />

@@ -12,6 +12,7 @@ import CourseManage from './containers/Courses/CourseManage';
 import ChapterCreate from './containers/Chapters/ChapterCreate';
 
 import QuizPractice from './containers/Quizzes/QuizPractice';
+import QuizManage from './containers/Quizzes/QuizManage';
 
 import QuestionCreate from './containers/Questions/QuestionCreate';
 
@@ -37,8 +38,8 @@ export default (
 
             <Route path="/quizzes">
                 <Route path='/quiz/:quizId/question' component={QuestionCreate} />
+                <Route path="/quiz/:quizId/manage" component={QuizManage} />
 
-                <Route path="/quiz/:quizId/start" />
                 <Route path="/quiz/:quizId/practice" component={QuizPractice} />
                 <Route path="/quiz/:quizId/finish" />
             </Route>

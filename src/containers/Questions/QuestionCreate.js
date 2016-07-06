@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import _ from 'underscore';
 
-import { addAnswer, markAnswer, updateQuestionText, updateAnswerText, removeAnswer, updateQuestionScore } from '../../actions/questions';
+import { addAnswer, markAnswer, updateQuestionText, updateAnswerText, removeAnswer, updateQuestionScore, submitQuestion } from '../../actions/questions';
 
 import Checkbox from 'material-ui/Checkbox';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
@@ -11,6 +11,9 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/paper';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+
+import { browserHistory } from 'react-router';
 
 const answerStyle = {
     display: 'flex',
@@ -67,18 +70,20 @@ class QuestionCreate extends Component {
             title: questionText,
             score,
             questionData: JSON.stringify({ answers: answers }),
+            quizId: this.props.quizId
         };
 
-        console.log(question);
+        this.props.submitQuestion(question)
+            .then(() => {
+                browserHistory.push(`/quiz/${this.props.quizId}/manage`);
+            });
     }
 
     render() {
         return (
-            <div class="container-fluid">
-                <h1 class="text-display-1">Add a new question</h1>
-
+            <div>
                 <form onSubmit={this.handleSubmit}>
-                    <Paper class="col-md-6" style={{ padding: '50px' }}>
+                    <Paper class="col-md-12" style={{ padding: '50px', backgroundColor: '#FAFAFA' }}>
                         <div>
                             <TextField
                               floatingLabelText="Please enter the question"
@@ -110,7 +115,7 @@ class QuestionCreate extends Component {
                         {this.renderAnswers()}
 
                         <div style={{ marginTop: '50px', 'textAlign': 'center' }}>
-                            <RaisedButton primary={true} type="submit" label="Submit"/>
+                            <RaisedButton default={true} type="submit" label="Submit"/>
                         </div>
                     </Paper>
                 </form>
@@ -125,4 +130,4 @@ function mapStateToProps (state) {
     };
 }
 
-export default connect(mapStateToProps, {addAnswer, markAnswer, updateQuestionText, updateAnswerText, removeAnswer, updateQuestionScore})(QuestionCreate);
+export default connect(mapStateToProps, {addAnswer, markAnswer, updateQuestionText, updateAnswerText, removeAnswer, updateQuestionScore, submitQuestion})(QuestionCreate);
