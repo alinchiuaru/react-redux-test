@@ -8,8 +8,12 @@ import Dashboard from './components/Dashboard';
 
 import CoursesCreate from './containers/Courses/CoursesCreate';
 import CourseManage from './containers/Courses/CourseManage';
-import QuizPractice from './containers/Quizzes/QuizPractice';
+
 import ChapterCreate from './containers/Chapters/ChapterCreate';
+
+import QuizPractice from './containers/Quizzes/QuizPractice';
+
+import QuestionCreate from './containers/Questions/QuestionCreate';
 
 function requireAuth(nextState, replace) {
     if (!localStorage.getItem('user_token')) {
@@ -27,17 +31,20 @@ export default (
 
             <Route path="/courses">
                 <Route path="/courses/:courseId/manage" component={CourseManage} />
+                <Route path="/courses/:courseId/chapter" component={ChapterCreate} />
                 <Route path="/create/course" component={CoursesCreate} />
             </Route>
 
             <Route path="/quizzes">
+                <Route path='/quiz/:quizId/question' component={QuestionCreate} />
+
                 <Route path="/quiz/:quizId/start" />
                 <Route path="/quiz/:quizId/practice" component={QuizPractice} />
                 <Route path="/quiz/:quizId/finish" />
             </Route>
 
             <Route path="/chapters">
-                <Route path="/courses/:courseId/chapter/add" component={ChapterCreate} />
+                <Route path="/courses/:courseId/chapter" component={ChapterCreate} />
             </Route>
 
         </Route>
