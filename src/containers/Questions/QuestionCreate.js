@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'underscore';
 
 import { addAnswer, markAnswer, updateQuestionText, updateAnswerText, removeAnswer, updateQuestionScore, submitQuestion } from '../../actions/questions';
+import { fetchQuiz } from '../../actions/quizzes';
 
 import Checkbox from 'material-ui/Checkbox';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
@@ -75,7 +76,10 @@ class QuestionCreate extends Component {
 
         this.props.submitQuestion(question)
             .then(() => {
-                browserHistory.push(`/quiz/${this.props.quizId}/manage`);
+                this.props.fetchQuiz(this.props.quizId)
+                    .then(() => {
+                         this.props.handleTabChange('questions');
+                    });
             });
     }
 
@@ -130,4 +134,4 @@ function mapStateToProps (state) {
     };
 }
 
-export default connect(mapStateToProps, {addAnswer, markAnswer, updateQuestionText, updateAnswerText, removeAnswer, updateQuestionScore, submitQuestion})(QuestionCreate);
+export default connect(mapStateToProps, {addAnswer, markAnswer, updateQuestionText, updateAnswerText, removeAnswer, updateQuestionScore, submitQuestion, fetchQuiz})(QuestionCreate);
