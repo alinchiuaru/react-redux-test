@@ -6,6 +6,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SideNav from '../components/SideNav';
 import { fetchMyDetails } from '../actions/users';
 
+import Paper from 'material-ui/Paper';
+import StatusBar from '../components/StatusBar';
+
+
 
 class App extends Component {
     componentDidMount() {
@@ -18,6 +22,9 @@ class App extends Component {
                 <div class="app-container">
                     <SideNav user={this.props.users.me}/>
                     <div style={{width: '100%'}}>
+                        <Paper style={{ width: '100%'}} zDepth={0}>
+                            <StatusBar/>
+                        </Paper>
                         {this.props.children}
                     </div>
                 </div>

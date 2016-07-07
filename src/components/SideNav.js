@@ -8,14 +8,9 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 
-const sideNavStyle = {
-    textAlign  : 'center',
-    padding: 0,
-    width: '24%',
-    display: 'flex',
-    flexDirection: 'column',
-    flex: '1 1 auto'
-};
+import RaisedButton from 'material-ui/RaisedButton';
+
+import { connect } from 'react-redux';
 
 const topStyle = {
     height          : '25%',
@@ -26,7 +21,8 @@ const topStyle = {
     display         : 'flex',
     flexDirection   : 'column',
     alignItems      : 'center',
-    justifyContent  : 'center'
+    justifyContent  : 'center',
+    borderRadius    : 0
 };
 
 const bottomStyle = {
@@ -57,25 +53,44 @@ const listStyle = {
     'marginTop' : '5%',
 };
 
-const SideNav = (props) => (
-    <Paper class="side-nav" style={sideNavStyle} zDepth={1}>
-        <Paper style={topStyle} zDepth={1}>
-            <Paper style={circleStyle} circle={true} zDepth={0}></Paper>
-            <div style={detailsStyle}>
-                <h2 class="text-headline">{props.user.username}</h2>
-                <h4 class="text-subhead">{props.user.email}</h4>
-            </div>
-        </Paper>
+const hidden = {
+    opacity: '0',
+    width: '0px',
+    height: '0px'
+};
 
-        <Paper style={bottomStyle} zDepth={0}>
-            <List style={listStyle}>
-              <Link to="/dashboard" activeClassName="side-nav-active"> <ListItem primaryText="Dashboard" leftIcon={<ContentInbox />} /> </Link>
-              <Link to="/students" activeClassName="side-nav-active"> <ListItem primaryText="Students" leftIcon={<ActionGrade />} /> </Link>
-              <Link to="/create/course" activeClassName="side-nav-active"> <ListItem primaryText="Courses" leftIcon={<ContentSend />} /> </Link>
-            </List>
-        </Paper>
-    </Paper>
-);
+class SideNav extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
+    render() {
+        return (
+            <Paper class="side-nav" zDepth={1} style={ !this.props.sideNav.open ? hidden : {} }>
+                <Paper style={topStyle} zDepth={1}>
+                    <Paper style={circleStyle} circle={true} zDepth={0}></Paper>
+                    <div style={detailsStyle}>
+                        <h2 class="text-headline">{this.props.user.username}</h2>
+                        <h4 class="text-subhead">{this.props.user.email}</h4>
+                    </div>
+                </Paper>
 
-export default SideNav;
+                <Paper style={bottomStyle} zDepth={0}>
+                    <List style={listStyle}>
+                      <Link to="/dashboard" activeClassName="side-nav-active"> <ListItem primaryText="Dashboard" leftIcon={<ContentInbox />} /> </Link>
+                      <Link to="/students" activeClassName="side-nav-active"> <ListItem primaryText="Students" leftIcon={<ActionGrade />} /> </Link>
+                      <Link to="/create/course" activeClassName="side-nav-active"> <ListItem primaryText="Courses" leftIcon={<ContentSend />} /> </Link>
+                    </List>
+                </Paper>
+            </Paper>
+        )
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        sideNav: state.sideNav
+    }
+};
+
+export default connect(mapStateToProps, {})(SideNav);
