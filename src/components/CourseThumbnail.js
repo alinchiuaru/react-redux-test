@@ -32,15 +32,15 @@ const CourseThumbnail = (props) => (
     <div class="col-md-4 col-xs-6" style={{ 'padding': 10, 'position': 'relative' }}>
         <Paper style={computeLogoStyle(props)} zDepth={4}></Paper>
 
-        <Link to={`courses/${props.id}/manage`}>
+        <Link to={props.link}>
              <FloatingActionButton style={{ position: 'absolute', 'top': '56%', 'right': '5%' }}>
-                <Settings />
+                {props.icon}
             </FloatingActionButton>
         </Link>
 
         <Paper style={ descriptionStyle }>
             <h2 class="text-title">{ props.title }</h2>
-            <p class="text-body" style={{  textOverflow : 'ellipsis', overflow: 'hidden', whiteSpace: 'pre' }}>{ props.description }</p>
+            <p class="text-body" style={{  textOverflow : 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{ props.description }</p>
         </Paper>
     </div>
 );

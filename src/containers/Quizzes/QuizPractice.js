@@ -61,8 +61,8 @@ class QuizPractice extends Component {
         return (
             <div class="container-fluid">
                 <div style={{ margin: '20px 0' }}>
-                    <h2 class="text text-title">{this.props.quizPractice.quiz.name}</h2>
-                    <h3 class="text text-subhead">{this.props.quizPractice.quiz.description}</h3>
+                    <h2 class="text text-display-1">{this.props.quizPractice.quiz.name}</h2>
+                    <h3 class="text text-headline">{this.props.quizPractice.quiz.description}</h3>
                 </div>
                 <Divider inset={false} />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

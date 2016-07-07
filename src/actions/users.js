@@ -23,6 +23,7 @@ export function fetchMyDetails() {
 
         axios.get('user/me')
             .then( response => {
+                localStorage.setItem('user_role', response.data.data.admin ? 1 : 0);
                 dispatch(receiveMe(response.data.data));
             });
     }

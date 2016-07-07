@@ -37,16 +37,16 @@ function loginError(message) {
 
 export function loginUser(creds) {
     return function(dispatch) {
+        localStorage.setItem('user_token', '');
         dispatch(requestLogin(creds));
 
         return axios.post(`${ROOT_URL}/auth`, creds)
             .then((response) => {
-                console.log(response);
                 if ( !response.data.success ) {
                     dispatch( loginError(response.data.message) );
                 } else {
+                    console.log(response.data);
                     localStorage.setItem('user_token', response.data.token);
-
                     dispatch(receiveLogin(response.data));
                 }
             })

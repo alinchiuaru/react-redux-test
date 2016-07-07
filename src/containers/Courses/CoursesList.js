@@ -4,6 +4,9 @@ import CourseThumbnail from '../../components/CourseThumbnail';
 import { fetchMyCourses } from '../../actions/courses';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 
+import Settings from 'material-ui/svg-icons/action/settings';
+import Explore from 'material-ui/svg-icons/action/Explore';
+
 const titleStyle = {
     display: 'flex',
     alignItems: 'center',
@@ -20,9 +23,21 @@ class CoursesList extends Component {
             return;
         }
 
-       return this.props.courses.courses.map(function(course) {
+
+       return this.props.courses.courses.map( (course) => {
+            const link = this.props.userMe.admin ? `courses/${course.id}/manage` : `courses/${course.id}/study`;
+            const icon = this.props.userMe.admin ? <Settings /> : <Explore />;
+
             return (
-                <CourseThumbnail key={course.id} id={course.id} description={course.description} title={course.title} logo={course.logo} />
+                <CourseThumbnail
+                    key={course.id}
+                    id={course.id}
+                    description={course.description}
+                    title={course.title}
+                    logo={course.logo}
+                    link={link}
+                    icon={icon}
+                />
             );
         });
     }
@@ -37,7 +52,7 @@ class CoursesList extends Component {
 }
 
 function mapStateToProps(state) {
-    return { courses: state.courses };
+    return { courses: state.courses, userMe: state.users.me };
 }
 
 export default connect(mapStateToProps, { fetchMyCourses })(CoursesList);

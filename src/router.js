@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard';
 
 import CoursesCreate from './containers/Courses/CoursesCreate';
 import CourseManage from './containers/Courses/CourseManage';
+import CourseStudy from './containers/Courses/CourseStudy';
 
 import ChapterCreate from './containers/Chapters/ChapterCreate';
 
@@ -25,27 +26,38 @@ function requireAuth(nextState, replace) {
     }
 }
 
+function requireAdmin(nextState, replace) {
+    if (localStorage.getItem('user_role') != 1) {
+        replace({
+            pathname: '/dashboard',
+            state: { nextPathname: nextState.location.pathname }
+        })
+    }
+}
+
 export default (
     <Router history={browserHistory}>
         <Route path="/" component={App} onEnter={requireAuth}>
             <Route path="/dashboard" component={Dashboard} />
 
             <Route path="/courses">
-                <Route path="/courses/:courseId/manage" component={CourseManage} />
-                <Route path="/courses/:courseId/chapter" component={ChapterCreate} />
-                <Route path="/create/course" component={CoursesCreate} />
+                <Route path="/courses/:courseId/manage" component={CourseManage} onEnter={requireAdmin}/>
+                <Route path="/courses/:courseId/chapter" component={ChapterCreate} onEnter={requireAdmin}/>
+                <Route path="/create/course" component={CoursesCreate} onEnter={requireAdmin}/>
+
+                <Route path="/courses/:courseId/study" component={CourseStudy}/>
             </Route>
 
             <Route path="/quizzes">
-                <Route path='/quiz/:quizId/question' component={QuestionCreate} />
-                <Route path="/quiz/:quizId/manage" component={QuizManage} />
+                <Route path='/quiz/:quizId/question' component={QuestionCreate} onEnter={requireAdmin}/>
+                <Route path="/quiz/:quizId/manage" component={QuizManage} onEnter={requireAdmin}/>
 
                 <Route path="/quiz/:quizId/practice" component={QuizPractice} />
                 <Route path="/quiz/:quizId/finish" />
             </Route>
 
             <Route path="/chapters">
-                <Route path="/courses/:courseId/chapter" component={ChapterCreate} />
+                <Route path="/courses/:courseId/chapter" component={ChapterCreate} onEnter={requireAdmin}/>
             </Route>
 
         </Route>
