@@ -11,8 +11,6 @@ import { toggleSidenav } from '../actions/sidenav';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-
-
 const StatusBar = (props) => (
     <AppBar
         title="eLearning"
@@ -27,7 +25,7 @@ const StatusBar = (props) => (
           >
             <MenuItem primaryText="Dashboard"  onClick={ () => browserHistory.push('/dashboard') }/>
             <MenuItem primaryText="Help"/>
-            <MenuItem primaryText="Sign out" />
+            <MenuItem primaryText="Sign out" onClick={() => { localStorage.clear(); browserHistory.push('/login')} } />
           </IconMenu>
         }
     />
