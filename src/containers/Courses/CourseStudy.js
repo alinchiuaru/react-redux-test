@@ -23,6 +23,11 @@ const tileStyle = {
     color: '#FFFFFF'
 };
 
+const blackWhite = {
+    'WebkitFilter': 'grayscale(100%)',
+    'filter': 'grayscale(100%)',
+}
+
 class CourseStudy extends Component {
     constructor(props) {
         super(props);
@@ -57,8 +62,13 @@ class CourseStudy extends Component {
 
     renderQuizzes() {
         return this.props.selectedCourse.quizzes.map( quiz => {
+            var hasQuestions = quiz.questions.length > 0;
+
             return (
-                <Paper key={quiz.id} class="col-md-2 tile" zDepth={2} onClick={ () => browserHistory.push(`/quiz/${quiz.id}/practice`) }>
+                <Paper style={ !hasQuestions ? blackWhite: {} }
+                    key={quiz.id} class="col-md-2 tile"
+                    zDepth={2}
+                    onClick={ () => hasQuestions ? browserHistory.push(`/quiz/${quiz.id}/practice`) : ''}>
                     <div style={tileStyle}>
                         <p style={textStyle}>{quiz.name}</p>
                     </div>

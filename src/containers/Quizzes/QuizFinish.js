@@ -46,7 +46,7 @@ class QuizFinish extends React.Component {
                 <Divider inset={false} />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Paper class="col-md-12" zDepth={2} style={style}>
-                        <h3 class="text text-headline">You have received a score of <b>{this.props.quizPractice.score.receivedScore}</b> points out of <b>{this.props.quizPractice.score.totalScore}</b> points.</h3>
+                        <h3 class="text text-headline">You have received a score of <b>{this.props.quizPractice.score.receivedScore || 0}</b> points out of <b>{this.props.quizPractice.score.totalScore}</b> points.</h3>
                         <RaisedButton
                             label="EXIT" primary={true}
                             style={buttonStyle.button}
