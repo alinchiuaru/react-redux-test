@@ -14,6 +14,7 @@ import ChapterCreate from './containers/Chapters/ChapterCreate';
 
 import QuizPractice from './containers/Quizzes/QuizPractice';
 import QuizManage from './containers/Quizzes/QuizManage';
+import QuizFinish from './containers/Quizzes/QuizFinish';
 
 import QuestionCreate from './containers/Questions/QuestionCreate';
 
@@ -53,7 +54,7 @@ export default (
                 <Route path="/quiz/:quizId/manage" component={QuizManage} onEnter={requireAdmin}/>
 
                 <Route path="/quiz/:quizId/practice" component={QuizPractice} />
-                <Route path="/quiz/:quizId/finish" />
+                <Route path="/quiz/:quizId/finish" component={QuizFinish}/>
             </Route>
 
             <Route path="/chapters">

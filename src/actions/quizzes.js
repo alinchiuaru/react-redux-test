@@ -13,6 +13,9 @@ export const ADD_ANSWER = 'ADD_ANSWER';
 
 export const CREATE_QUIZ = 'CREATE_QUIZ';
 
+export const REQUEST_QUIZ_SCORE = 'REQUEST_QUIZ_SCORE';
+export const RECEIVE_QUIZ_SCORE = 'RECEIVE_QUIZ_SCORE';
+
 
 export function selectQuestion (index) {
     return {
@@ -69,6 +72,31 @@ function addAnswer (answer, correct) {
         type: ADD_ANSWER,
         answer,
         correct
+    }
+}
+
+function requestQuizScore() {
+    return {
+        type: REQUEST_QUIZ_SCORE,
+        isFetching: true
+    }
+}
+
+function receiveQuizScore(data) {
+    return {
+        type: RECEIVE_QUIZ_SCORE,
+        data
+    }
+}
+
+export function fetchQuizScore (quizId) {
+    return dispatch => {
+        dispatch(requestQuizScore());
+
+        return axios.get(`/quizzes/${quizId}/score`)
+            .then( response => {
+                dispatch(receiveQuizScore(response.data.data));
+            });
     }
 }
 

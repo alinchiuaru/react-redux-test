@@ -1,6 +1,15 @@
-import { REQUEST_QUIZ, RECEIVE_QUIZ, REQUEST_QUIZ_PROGRESS, RECEIVE_QUIZ_PROGRESS, SELECT_QUESTION, ANSWER_QUESTION, SKIP_QUESTION, ADD_ANSWER } from '../actions/quizzes';
+import {
+    REQUEST_QUIZ,
+    RECEIVE_QUIZ,
+    REQUEST_QUIZ_PROGRESS,
+    RECEIVE_QUIZ_PROGRESS,
+    SELECT_QUESTION,
+    ANSWER_QUESTION,
+    SKIP_QUESTION,
+    ADD_ANSWER,
+    RECEIVE_QUIZ_SCORE } from '../actions/quizzes';
 
-const intialState = { selectedQuestion: {}, questionsList: [], finished: false, quiz: {} };
+const intialState = { selectedQuestion: {}, questionsList: [], finished: false, quiz: {}, score: {} };
 
 export default function quizPractice(state = intialState, action) {
     switch ( action.type ) {
@@ -82,6 +91,13 @@ export default function quizPractice(state = intialState, action) {
                 ...state,
                 selectedQuestion: {...state.selectedQuestion, questionData: newAnswers}
            }
+
+        case RECEIVE_QUIZ_SCORE:
+            return {
+                ...state,
+                score: action.data
+            }
+
 
         default:
             return state;
