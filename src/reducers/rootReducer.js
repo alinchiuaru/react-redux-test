@@ -8,6 +8,7 @@ import quizPractice from './quizPracticeReducer';
 import users from './usersReducer';
 import question from './questionReducer';
 import sideNav from './sidenavReducer';
+import chapters from './chaptersReducer';
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     quizPractice: quizPractice,
     users: users,
     addQuestionForm: question,
-    sideNav: sideNav
+    sideNav: sideNav,
+    chapters: chapters
 });
 
 export default rootReducer;

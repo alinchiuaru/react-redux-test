@@ -11,6 +11,7 @@ import CourseManage from './containers/Courses/CourseManage';
 import CourseStudy from './containers/Courses/CourseStudy';
 
 import ChapterCreate from './containers/Chapters/ChapterCreate';
+import ChapterRead from './containers/Chapters/ChapterRead';
 
 import QuizPractice from './containers/Quizzes/QuizPractice';
 import QuizManage from './containers/Quizzes/QuizManage';
@@ -59,6 +60,8 @@ export default (
 
             <Route path="/chapters">
                 <Route path="/courses/:courseId/chapter" component={ChapterCreate} onEnter={requireAdmin}/>
+
+                <Route path="/chapter/:chapterId/read" component={ChapterRead}/>
             </Route>
 
         </Route>

@@ -80,7 +80,11 @@ class CourseStudy extends Component {
     renderChapters() {
         return this.props.selectedCourse.chapters.map( chapter => {
             return (
-                <Paper key={chapter.id} class="col-md-2 tile tile-chapter" zDepth={2}>
+                <Paper key={chapter.id}
+                    class="col-md-2 tile tile-chapter"
+                    zDepth={2}
+                    onClick={ () => browserHistory.push(`/chapter/${chapter.id}/read`)}
+                >
                     <div style={tileStyle}>
                         <p style={textStyle}>{chapter.title}</p>
                     </div>

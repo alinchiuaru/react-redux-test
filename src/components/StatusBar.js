@@ -13,7 +13,8 @@ import { browserHistory } from 'react-router';
 
 const StatusBar = (props) => (
     <AppBar
-        title="eLearning"
+        title="e - Learning"
+        titleStyle={{ fontFamily: 'Gochi Hand', fontSize: '48px' }}
         iconElementLeft={<IconButton onClick={props.toggleSidenav}><AppsIcon /></IconButton>}
         iconElementRight={
           <IconMenu
